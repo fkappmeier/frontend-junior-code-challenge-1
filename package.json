@@ -1,0 +1,24 @@
+{
+  "name": "frontend-junior-code-challenge-1",
+  "version": "1.0.0",
+  "description": "A recurring requirement is the exchange of data between different systems. [CSV-Files (comma separated values)](https://en.wikipedia.org/wiki/CSV_(Dateiformat)) are often used for this purpose, for example database exports, calendar applications or spreadsheets.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fkappmeier/frontend-junior-code-challenge-1.git"
+  },
+  "author": "Fredrik Kappmeier",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fkappmeier/frontend-junior-code-challenge-1/issues"
+  },
+  "homepage": "https://github.com/fkappmeier/frontend-junior-code-challenge-1#readme",
+  "devDependencies": {
+    "eslint": "^8.10.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4"
+  }
+}
