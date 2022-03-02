@@ -1,4 +1,4 @@
-import { readCSVFile } from './fileReader';
+import readCSVFile from './fileReader';
 
 const div = document.createElement('div');
 const fileInput = document.createElement('input');

@@ -1,5 +1,3 @@
-function readCSVFile(file) {
+export default function readCSVFile(file) {
   console.log(file);
 }
-
-export default { readCSVFile };
