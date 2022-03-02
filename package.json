@@ -1,10 +1,11 @@
 {
   "name": "frontend-junior-code-challenge-1",
   "version": "1.0.0",
-  "description": "A recurring requirement is the exchange of data between different systems. [CSV-Files (comma separated values)](https://en.wikipedia.org/wiki/CSV_(Dateiformat)) are often used for this purpose, for example database exports, calendar applications or spreadsheets.",
-  "main": "index.js",
+  "description": "",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,9 @@
   "devDependencies": {
     "eslint": "^8.10.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.25.4"
+    "eslint-plugin-import": "^2.25.4",
+    "html-webpack-plugin": "^5.5.0",
+    "webpack": "^5.69.1",
+    "webpack-cli": "^4.9.2"
   }
 }
