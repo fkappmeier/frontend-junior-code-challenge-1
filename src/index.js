@@ -1,4 +1,4 @@
-import readCSVFile from './fileReader';
+import readCSVFileAsync from './fileReader';
 
 const div = document.createElement('div');
 const fileInput = document.createElement('input');
@@ -12,8 +12,12 @@ fileInput.accept = '.csv';
 
 uploadButton.innerHTML = 'Upload';
 
-uploadButton.addEventListener('click', () => {
-  readCSVFile(fileInput.files[0]);
+uploadButton.addEventListener('click', async () => {
+  const fileContent = await readCSVFileAsync(fileInput.files[0]);
+
+  if (fileContent) {
+    console.log(fileContent); // TODO
+  }
 });
 
 div.appendChild(span);
