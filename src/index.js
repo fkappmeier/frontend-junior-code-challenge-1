@@ -1,4 +1,5 @@
 import readCSVFileAsync from './fileReader';
+import processData from './dataProcessor';
 
 const div = document.createElement('div');
 const fileInput = document.createElement('input');
@@ -16,7 +17,9 @@ uploadButton.addEventListener('click', async () => {
   const fileContent = await readCSVFileAsync(fileInput.files[0]);
 
   if (fileContent) {
-    console.log(fileContent); // TODO
+    const tableData = processData(fileContent);
+
+    console.log(tableData); // TODO
   }
 });
 
