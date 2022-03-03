@@ -1,17 +1,15 @@
 export default function processData(fileContent) {
+  // replace 'double-double' ("") quotation marks with 'double-single' ('') marks
+  const doubleQuotesReplaced = fileContent.replaceAll('""', "''"); // TODO: Triple quotes @ P84
+
   // splitting by quotation marks will leave all substrings inside quotes
   // in uneven array indices and all non-quoted substrings in even indices
-  const quoteSplit = fileContent.split('"');
-  const allEntries = [];
-
-  const tempArray = [];
-  for (let i = 0; i < 50; i += 1) {
-    tempArray.push(quoteSplit[i]);
-  }
-  console.log(tempArray);
+  const quoteSplit = doubleQuotesReplaced.split('"');
 
   // now all entries not in quotation marks can be split further by
   // semicolon for a new data cell and by new line for a new data row
+
+  const allEntries = [];
 
   quoteSplit.forEach((entry, index) => {
     let seperatedEntries = [];
@@ -43,6 +41,14 @@ export default function processData(fileContent) {
     seperatedEntries.forEach((ent) => allEntries.push(ent));
   });
 
+  const allEntriesNew = [];
+
+  // reverse the double-double quotation mark replacements
+  allEntries.forEach((entry) => {
+    const newEntry = entry.replaceAll("''", '""');
+    allEntriesNew.push(newEntry);
+  });
+
   // determine the amount of columns by calculating the amount of entries
   // in the first row of the table
   const tableRows = fileContent.split('\r\n');
@@ -56,7 +62,7 @@ export default function processData(fileContent) {
 
   // create a two dimensional array where the first dimension determines
   // the row number and the second dimension the column number of an entry
-  allEntries.forEach((entry) => {
+  allEntriesNew.forEach((entry) => {
     if (indexOfCell === columnCount) {
       indexOfCell = 0;
       indexOfRow += 1;
