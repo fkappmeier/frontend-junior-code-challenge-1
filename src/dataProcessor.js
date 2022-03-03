@@ -4,6 +4,12 @@ export default function processData(fileContent) {
   const quoteSplit = fileContent.split('"');
   const allEntries = [];
 
+  const tempArray = [];
+  for (let i = 0; i < 50; i += 1) {
+    tempArray.push(quoteSplit[i]);
+  }
+  console.log(tempArray);
+
   // now all entries not in quotation marks can be split further by
   // semicolon for a new data cell and by new line for a new data row
 
@@ -16,18 +22,18 @@ export default function processData(fileContent) {
       if (newEntry.startsWith(';')) {
         newEntry = newEntry.slice(1); // remove semicolon from start of entry-string
       }
-      if (newEntry.endsWith(';')) {
-        newEntry = newEntry.slice(0, -1); // remove semicolon from end of entry-string
-      }
-
       if (newEntry.startsWith('\r\n')) {
         newEntry = newEntry.slice(4); // remove \r\n from start of entry-string
       }
-      if (newEntry.endsWith('\r\n')) {
-        newEntry = newEntry.slice(0, -4); // remove \r\n from end of entry-string
-      }
 
       if (newEntry !== '') {
+        if (newEntry.endsWith(';')) {
+          newEntry = newEntry.slice(0, -1); // remove semicolon from end of entry-string
+        }
+        if (newEntry.endsWith('\r\n')) {
+          newEntry = newEntry.slice(0, -4); // remove \r\n from end of entry-string
+        }
+
         seperatedEntries = newEntry.split(/;|\r\n/); // split
       }
     } else {
