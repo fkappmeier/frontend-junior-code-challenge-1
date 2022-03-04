@@ -1,10 +1,22 @@
+// ATTENTION: This way of processing the .csv file is not working because of edge cases
+// like double ("") or triple quotes (""")
+
+// this code is only left in this project to show the attempt to deconstruct a .csv file by hand
+// instead of simply using an already existing libary
+// however, using more than one work day's time on trying to find work arounds for edge cases
+// seems inefficient, since the idea of programming the data processing by hand was to get
+// familiar with the general structuring of a .csv file (which has happened)
+
 export default function processData(fileContent) {
+  // replace 'triple-double' (""") quotation marks with 'triple-single' (''') marks
+  const tripleQuotesReplaced = fileContent.replaceAll('"""', "'''");
+
   // replace 'double-double' ("") quotation marks with 'double-single' ('') marks
-  const doubleQuotesReplaced = fileContent.replaceAll('""', "''"); // TODO: Triple quotes @ P84
+  const doubleTripleQuotesReplaced = tripleQuotesReplaced.replaceAll('""', "''");
 
   // splitting by quotation marks will leave all substrings inside quotes
   // in uneven array indices and all non-quoted substrings in even indices
-  const quoteSplit = doubleQuotesReplaced.split('"');
+  const quoteSplit = doubleTripleQuotesReplaced.split('"');
 
   // now all entries not in quotation marks can be split further by
   // semicolon for a new data cell and by new line for a new data row
