@@ -1,5 +1,8 @@
+import '../styles/table.less';
+
 export default function createTable(data) {
   const table = document.getElementById('csv-table');
+  table.className = 'csv';
   table.style.display = 'none';
 
   data.forEach((dataRow, index) => {

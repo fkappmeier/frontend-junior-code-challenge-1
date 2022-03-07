@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/js/index.js',
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Probeaufgabe 1 - CSV Verarbeitung',
@@ -15,4 +15,16 @@ module.exports = {
   },
   mode: 'development',
   // mode: 'production',
+  module: {
+    rules: [
+      {
+        test: /\.less$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'less-loader',
+        ],
+      },
+    ],
+  },
 };
