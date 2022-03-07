@@ -21,7 +21,8 @@ uploadButton.innerHTML = 'Upload';
 table.id = 'csv-table';
 createRecordDiv.id = 'create-record-div';
 createRecordDiv.style.display = 'none';
-createRecordButton.innerHTML = 'Create a new entry';
+createRecordButton.innerHTML = 'Create a new record';
+createRecordButton.id = 'create-record-button';
 
 // Event Listeners
 uploadButton.addEventListener('click', async () => {
