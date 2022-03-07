@@ -25,4 +25,5 @@ export default function createTable(data) {
   });
 
   table.style.display = '';
+  document.getElementById('create-record-div').style.display = '';
 }
