@@ -10,3 +10,7 @@ export function setDataBuffer(newData) {
 export function addDataRow(newDataRow) {
   dataBuffer.push(newDataRow);
 }
+
+export function editDataCell(newCellValue, rowIndex, cellIndex) {
+  dataBuffer[rowIndex][cellIndex] = newCellValue;
+}

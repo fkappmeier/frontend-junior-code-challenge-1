@@ -1,12 +1,17 @@
 import '../styles/table.less';
 
+import * as dataBuffer from './dataBuffer';
+
 // Change new string in data buffer
 function saveCellEdit(newString, cell) {
   const cellBuffer = cell;
   cellBuffer.innerHTML = newString;
-  cellBuffer.editMode = false;
 
-  // TODO: Save changes to data buffer
+  const { rowIndex } = cell.parentElement;
+  const { cellIndex } = cell;
+  dataBuffer.editDataCell(newString, rowIndex, cellIndex);
+
+  cellBuffer.editMode = false;
 }
 
 // Behavior of cell when clicked on
