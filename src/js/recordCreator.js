@@ -1,26 +1,7 @@
-import Record from './record';
+import * as tableCreator from './tableCreator';
+import * as dataBuffer from './dataBuffer';
 
-const columnNames = [
-  'Hauptartikelnr',
-  'Artikelname',
-  'Hersteller',
-  'Beschreibung',
-
-  'Materialangaben',
-  'Geschlecht',
-  'Produktart',
-  'Ärmel',
-
-  'Bein',
-  'Kragen',
-  'Herstellung',
-  'Taschenart',
-
-  'Grammatur',
-  'Material',
-  'Ursprungsland',
-  'Bildname',
-];
+const columnNames = [];
 
 // Creates the necessary html elements for each column name
 function createTextInputLineDiv(name) {
@@ -57,29 +38,14 @@ function createOnClick() {
 
   const textInputsArray = getTextInputs();
 
-  const recordObject = new Record(
-    textInputsArray[0].value,
-    textInputsArray[1].value,
-    textInputsArray[2].value,
-    textInputsArray[3].value,
+  const newDataRow = [];
 
-    textInputsArray[4].value,
-    textInputsArray[5].value,
-    textInputsArray[6].value,
-    textInputsArray[7].value,
+  textInputsArray.forEach((input) => {
+    newDataRow.push(input.value);
+  });
 
-    textInputsArray[8].value,
-    textInputsArray[9].value,
-    textInputsArray[10].value,
-    textInputsArray[11].value,
-
-    textInputsArray[12].value,
-    textInputsArray[13].value,
-    textInputsArray[14].value,
-    textInputsArray[15].value,
-  );
-
-  console.log(recordObject);
+  tableCreator.addTableRow(newDataRow); // add new data to table
+  dataBuffer.addDataRow(newDataRow); // add new data to data buffer
 
   textInputsArray.forEach((i) => {
     const input = i;
@@ -89,13 +55,7 @@ function createOnClick() {
   textInputDiv.style.display = 'none';
   createRecordButton.disabled = false;
 
-  // TODO:
-  // - clearing all values from the text inputs
-  // - hiding the textInputDiv
-
-  // - adding the information from the new record Object to the table
-  // - creating an array of record objects from the data array (buffer database)
-  // - adding the new record object to the array of already existing records
+  window.scrollTo(0, document.body.scrollHeight); // scroll to bottom of page to show new entry
 }
 
 // Clear all input values and hide textInputDiv
@@ -146,7 +106,7 @@ function createTextInputDiv() {
 }
 
 // Main function
-export default function createRecord() {
+export function createRecord() {
   const createRecordButton = document.getElementById('create-record-button');
   let textInputDiv = document.getElementById('text-input-div');
 
@@ -158,4 +118,10 @@ export default function createRecord() {
   } else {
     textInputDiv.style.display = '';
   }
+}
+
+// simple setter function to dynamically set column names
+export function setColumnNames(nameArray) {
+  columnNames.length = 0; // clear array
+  nameArray.forEach((name) => columnNames.push(name));
 }

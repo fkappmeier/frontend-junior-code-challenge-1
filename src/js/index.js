@@ -1,8 +1,9 @@
 import * as Papa from 'papaparse';
 
 import readCSVFileAsync from './fileReader';
-import createTable from './tableCreator';
-import createRecord from './recordCreator';
+import * as tableCreator from './tableCreator';
+import * as recordCreator from './recordCreator';
+import * as dataBuffer from './dataBuffer';
 
 // Creation of elements
 const div = document.createElement('div');
@@ -31,11 +32,13 @@ uploadButton.addEventListener('click', async () => {
   if (fileContent) {
     const parsedFileContent = Papa.parse(fileContent);
     const { data } = parsedFileContent;
-    createTable(data);
+    tableCreator.createTable(data);
+    recordCreator.setColumnNames(data[0]);
+    dataBuffer.setDataBuffer(data);
   }
 });
 
-createRecordButton.addEventListener('click', createRecord);
+createRecordButton.addEventListener('click', recordCreator.createRecord);
 
 // Append it all together
 div.appendChild(span);
