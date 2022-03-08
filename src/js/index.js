@@ -20,6 +20,7 @@ fileInput.type = 'file';
 fileInput.accept = '.csv';
 uploadButton.innerHTML = 'Upload';
 table.id = 'csv-table';
+table.className = 'csv';
 createRecordDiv.id = 'create-record-div';
 createRecordDiv.style.display = 'none';
 createRecordButton.innerHTML = 'Create a new record';
@@ -27,15 +28,22 @@ createRecordButton.id = 'create-record-button';
 
 // Event Listeners
 uploadButton.addEventListener('click', async () => {
+  uploadButton.disabled = true;
+
   const fileContent = await readCSVFileAsync(fileInput.files[0]);
 
   if (fileContent) {
     const parsedFileContent = Papa.parse(fileContent);
     const { data } = parsedFileContent;
+
+    data.splice(data.length - 1, 1); // remove the empty dataRow at the end
+
     tableCreator.createTable(data);
     recordCreator.setColumnNames(data[0]);
     dataBuffer.setDataBuffer(data);
   }
+
+  uploadButton.disabled = false;
 });
 
 createRecordButton.addEventListener('click', recordCreator.createRecord);

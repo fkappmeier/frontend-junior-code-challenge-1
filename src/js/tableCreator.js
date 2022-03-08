@@ -2,8 +2,8 @@ import '../styles/table.less';
 
 export function createTable(data) {
   const table = document.getElementById('csv-table');
-  table.className = 'csv';
   table.style.display = 'none';
+  table.innerHTML = ''; // clear all previous children of table
 
   data.forEach((dataRow, index) => {
     const tableRow = document.createElement('tr');
