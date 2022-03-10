@@ -7,6 +7,7 @@ import * as tableCreator from './tableCreator';
 import * as recordCreator from './recordCreator';
 import * as dataBuffer from './dataBuffer';
 import * as dataAnalyzer from './dataAnalyzer';
+import * as chartDrawer from './chartDrawer';
 
 // Creation of elements
 
@@ -85,6 +86,9 @@ uploadButton.addEventListener('click', async () => {
 
     console.log('dataRowSizePercentages', dataRowSizePercentages);
     console.log('columnSizePercentages', columnSizePercentages);
+
+    chartDrawer.drawPieChart(dataRowSizePercentages);
+    chartDrawer.drawBarChart(columnSizePercentages);
 
     downloadButton.disabled = false;
   }
