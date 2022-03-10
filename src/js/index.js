@@ -60,15 +60,45 @@ uploadButton.addEventListener('click', async () => {
     const parsedFileContent = Papa.parse(fileContent);
     const { data } = parsedFileContent;
 
-    data.splice(data.length - 1, 1); // remove the empty dataRow at the end
+    // remove empty lines
+    data.forEach((dataRow, index) => {
+      if (dataRow.length <= 1) {
+        data.splice(index, 1);
+      }
+    });
 
     tableCreator.createTable(data);
     recordCreator.setColumnNames(data[0]);
     dataBuffer.setDataBuffer(data);
+
+    downloadButton.disabled = false;
   }
 
   uploadButton.disabled = false;
-  downloadButton.disabled = false;
+});
+
+downloadButton.addEventListener('click', () => {
+  const csvData = Papa.unparse(dataBuffer.getDataBuffer(), {
+    quotes: false,
+    quoteChar: '"',
+    escapeChar: '"',
+    delimiter: ';',
+    header: true,
+    newline: '\r\n',
+    skipEmptyLines: false,
+    columns: null,
+  });
+
+  const a = document.createElement('a');
+
+  a.href = `data:text/csv;charset=utf-8,%EF%BB%BF${encodeURIComponent(csvData)}`;
+  a.download = 'newFile.csv';
+
+  a.style.display = 'none';
+  document.body.appendChild(a);
+
+  a.click();
+  document.body.removeChild(a);
 });
 
 createRecordButton.addEventListener('click', recordCreator.createRecord);

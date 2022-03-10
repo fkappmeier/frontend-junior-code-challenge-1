@@ -14,3 +14,7 @@ export function addDataRow(newDataRow) {
 export function editDataCell(newCellValue, rowIndex, cellIndex) {
   dataBuffer[rowIndex][cellIndex] = newCellValue;
 }
+
+export function getDataBuffer() {
+  return dataBuffer;
+}
