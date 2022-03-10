@@ -14,8 +14,10 @@ import * as chartDrawer from './chartDrawer';
 // top level div elements
 const div = document.createElement('div');
 const fileManagementDiv = document.createElement('div');
+const chartManagementDiv = document.createElement('div');
 
-fileManagementDiv.id = 'file-management';
+fileManagementDiv.className = 'flex-container';
+chartManagementDiv.className = 'flex-container';
 
 // upload elements
 const uploadDiv = document.createElement('div');
@@ -36,6 +38,15 @@ const downloadButton = document.createElement('button');
 downloadText.innerHTML = 'Download data as .csv file';
 downloadButton.innerHTML = 'Download';
 downloadButton.disabled = true;
+
+// chart elements
+const pieCanvas = document.createElement('canvas');
+const barCanvas = document.createElement('canvas');
+
+pieCanvas.width = 400;
+pieCanvas.height = 400;
+barCanvas.width = 400;
+barCanvas.height = 400;
 
 // create new record elements
 const createRecordDiv = document.createElement('div');
@@ -144,9 +155,17 @@ createRecordDiv.appendChild(createRecordButton);
 fileManagementDiv.appendChild(uploadDiv);
 fileManagementDiv.appendChild(downloadDiv);
 
+chartManagementDiv.appendChild(pieCanvas);
+chartManagementDiv.appendChild(barCanvas);
+
 div.appendChild(fileManagementDiv);
 div.appendChild(document.createElement('br'));
 div.appendChild(document.createElement('br'));
+
+div.appendChild(chartManagementDiv);
+div.appendChild(document.createElement('br'));
+div.appendChild(document.createElement('br'));
+
 div.appendChild(createRecordDiv);
 div.appendChild(document.createElement('br'));
 div.appendChild(document.createElement('br'));
