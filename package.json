@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "chart.js": "^3.7.1",
-    "papaparse": "^5.3.1"
+    "papaparse": "^5.3.1",
+    "randomcolor": "^0.6.2"
   }
 }

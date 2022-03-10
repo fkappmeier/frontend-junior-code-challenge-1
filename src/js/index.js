@@ -40,13 +40,24 @@ downloadButton.innerHTML = 'Download';
 downloadButton.disabled = true;
 
 // chart elements
-const pieCanvas = document.createElement('canvas');
+const barChartDiv = document.createElement('div');
+const pieChartDiv = document.createElement('div');
 const barCanvas = document.createElement('canvas');
+const pieCanvas = document.createElement('canvas');
+const pieChartLabel = document.createElement('span');
 
-pieCanvas.width = 400;
-pieCanvas.height = 400;
+barChartDiv.style.display = 'none';
+pieChartDiv.style.display = 'none';
+
 barCanvas.width = 400;
 barCanvas.height = 400;
+pieCanvas.width = 400;
+pieCanvas.height = 400;
+barCanvas.id = 'bar-chart-canvas';
+pieCanvas.id = 'pie-chart-canvas';
+
+pieChartLabel.id = 'pie-chart-label';
+pieChartLabel.innerHTML = '% of Rows with X filled in Fields';
 
 // create new record elements
 const createRecordDiv = document.createElement('div');
@@ -89,17 +100,17 @@ uploadButton.addEventListener('click', async () => {
     recordCreator.setColumnNames(columnNames);
     dataBuffer.setDataBuffer(data);
 
-    // TODO: Make this a pie chart
-    const dataRowSizePercentages = dataAnalyzer.getDataRowPercentages();
-
-    // TODO: Make this a bar chart
+    // percentage values for bar chart
     const columnSizePercentages = dataAnalyzer.getColumnPercentages();
 
-    console.log('dataRowSizePercentages', dataRowSizePercentages);
-    console.log('columnSizePercentages', columnSizePercentages);
+    // percentage values for pie chart
+    const dataRowSizePercentages = dataAnalyzer.getDataRowPercentages();
 
+    barChartDiv.style.display = '';
+    pieChartDiv.style.display = '';
+
+    chartDrawer.drawBarChart(columnSizePercentages, columnNames);
     chartDrawer.drawPieChart(dataRowSizePercentages);
-    chartDrawer.drawBarChart(columnSizePercentages);
 
     downloadButton.disabled = false;
   }
@@ -148,6 +159,12 @@ downloadDiv.appendChild(document.createElement('br'));
 downloadDiv.appendChild(document.createElement('br'));
 downloadDiv.appendChild(downloadButton);
 
+// Charts
+pieChartDiv.appendChild(pieChartLabel);
+pieChartDiv.appendChild(pieCanvas);
+
+barChartDiv.appendChild(barCanvas);
+
 // Create
 createRecordDiv.appendChild(createRecordButton);
 
@@ -155,8 +172,8 @@ createRecordDiv.appendChild(createRecordButton);
 fileManagementDiv.appendChild(uploadDiv);
 fileManagementDiv.appendChild(downloadDiv);
 
-chartManagementDiv.appendChild(pieCanvas);
-chartManagementDiv.appendChild(barCanvas);
+chartManagementDiv.appendChild(barChartDiv);
+chartManagementDiv.appendChild(pieChartDiv);
 
 div.appendChild(fileManagementDiv);
 div.appendChild(document.createElement('br'));

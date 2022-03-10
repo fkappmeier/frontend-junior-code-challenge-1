@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import * as dataBuffer from './dataBuffer';
 
 export function getDataRowPercentages() {
