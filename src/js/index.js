@@ -54,6 +54,10 @@ table.className = 'csv';
 uploadButton.addEventListener('click', async () => {
   uploadButton.disabled = true;
 
+  // get file name
+  const fileName = fileInput.value.split(/(\\|\/)/g).pop();
+  dataBuffer.setFileNameBuffer(fileName);
+
   const fileContent = await readCSVFileAsync(fileInput.files[0]);
 
   if (fileContent) {
@@ -92,7 +96,7 @@ downloadButton.addEventListener('click', () => {
   const a = document.createElement('a');
 
   a.href = `data:text/csv;charset=utf-8,%EF%BB%BF${encodeURIComponent(csvData)}`;
-  a.download = 'newFile.csv';
+  a.download = `${dataBuffer.getFileNameOnly()} new.csv`;
 
   a.style.display = 'none';
   document.body.appendChild(a);
