@@ -6,6 +6,7 @@ import readCSVFileAsync from './fileReader';
 import * as tableCreator from './tableCreator';
 import * as recordCreator from './recordCreator';
 import * as dataBuffer from './dataBuffer';
+import * as dataAnalyzer from './dataAnalyzer';
 
 // Creation of elements
 
@@ -63,6 +64,7 @@ uploadButton.addEventListener('click', async () => {
   if (fileContent) {
     const parsedFileContent = Papa.parse(fileContent);
     const { data } = parsedFileContent;
+    const columnNames = data[0];
 
     // remove empty lines
     data.forEach((dataRow, index) => {
@@ -72,8 +74,17 @@ uploadButton.addEventListener('click', async () => {
     });
 
     tableCreator.createTable(data);
-    recordCreator.setColumnNames(data[0]);
+    recordCreator.setColumnNames(columnNames);
     dataBuffer.setDataBuffer(data);
+
+    // TODO: Make this a pie chart
+    const dataRowSizePercentages = dataAnalyzer.getDataRowPercentages();
+
+    // TODO: Make this a bar chart
+    const columnSizePercentages = dataAnalyzer.getColumnPercentages();
+
+    console.log('dataRowSizePercentages', dataRowSizePercentages);
+    console.log('columnSizePercentages', columnSizePercentages);
 
     downloadButton.disabled = false;
   }
