@@ -58,7 +58,6 @@ const barChartDiv = document.createElement('div');
 const pieChartDiv = document.createElement('div');
 const barCanvas = document.createElement('canvas');
 const pieCanvas = document.createElement('canvas');
-const pieChartLabel = document.createElement('p');
 
 barChartDiv.className = 'bordered-container';
 pieChartDiv.className = 'bordered-container';
@@ -68,9 +67,6 @@ pieCanvas.width = 400;
 pieCanvas.height = 400;
 barCanvas.id = 'bar-chart-canvas';
 pieCanvas.id = 'pie-chart-canvas';
-
-pieChartLabel.id = 'pie-chart-label';
-pieChartLabel.innerHTML = '% of Rows with X filled in Fields';
 
 // create new record elements
 const createRecordContainer = document.createElement('div');
@@ -169,7 +165,6 @@ downloadDiv.appendChild(downloadButton);
 fileDivContainer.appendChild(downloadDiv);
 
 // Charts
-pieChartDiv.appendChild(pieChartLabel);
 pieChartDiv.appendChild(pieCanvas);
 barChartDiv.appendChild(barCanvas);
 chartContainer.appendChild(pieChartDiv);

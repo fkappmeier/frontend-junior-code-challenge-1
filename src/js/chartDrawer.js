@@ -67,7 +67,7 @@ export function drawBarChart(percentageArray, columnNames) {
     data: {
       labels: columnNames,
       datasets: [{
-        label: '% of Filled Fields per Column',
+        label: '',
         data: percentageArray,
         backgroundColor: backgroundColors,
         borderWidth: 0,
@@ -75,9 +75,33 @@ export function drawBarChart(percentageArray, columnNames) {
     },
     options: {
       indexAxis: 'y',
+      plugins: {
+        title: {
+          display: true,
+          text: '% of Filled Fields per Column',
+          color: '#dedede',
+        },
+        legend: {
+          display: false,
+        },
+      },
       scales: {
         x: {
           beginAtZero: true,
+          grid: {
+            color: '#5b5b5b',
+          },
+          ticks: {
+            color: '#dedede',
+          },
+        },
+        y: {
+          grid: {
+            color: '#5b5b5b',
+          },
+          ticks: {
+            color: '#dedede',
+          },
         },
       },
     },
@@ -86,7 +110,6 @@ export function drawBarChart(percentageArray, columnNames) {
 
 export function drawPieChart(percentageArray) {
   const canvas = document.getElementById('pie-chart-canvas');
-  const pieChartLabel = document.getElementById('pie-chart-label');
 
   const chartLabels = [];
   const backgroundColors = [];
@@ -108,9 +131,12 @@ export function drawPieChart(percentageArray) {
       }],
     },
     options: {
-      scales: {
-        y: {
-          beginAtZero: true,
+      color: '#dedede',
+      plugins: {
+        title: {
+          display: true,
+          text: '% of Rows with X filled in Fields',
+          color: '#dedede',
         },
       },
     },

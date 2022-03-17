@@ -6,7 +6,7 @@ const columnNames = [];
 // Creates the necessary html elements for each column name
 function createTextInputLineDiv(name) {
   const lineDiv = document.createElement('div');
-  const text = document.createElement('b');
+  const text = document.createElement('span');
   const textInput = document.createElement('input');
 
   text.innerHTML = `${name}: `;
