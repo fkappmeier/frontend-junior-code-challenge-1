@@ -11,19 +11,31 @@ import * as chartDrawer from './chartDrawer';
 
 // Creation of elements
 
-// top level div elements
-const div = document.createElement('div');
-const fileManagementDiv = document.createElement('div');
-const chartManagementDiv = document.createElement('div');
+// section elements
+const headline = document.createElement('h1');
 
-fileManagementDiv.className = 'flex-container';
-chartManagementDiv.className = 'flex-container';
+const fileSection = document.createElement('section');
+const chartSection = document.createElement('section');
+const createRecordSection = document.createElement('section');
+const tableSection = document.createElement('section');
+
+headline.innerHTML = 'Probeaufgabe 1 - CSV Verarbeitung';
+fileSection.className = 'flex-container';
+chartSection.className = 'flex-container';
+createRecordSection.className = 'flex-container';
+createRecordSection.id = 'create-record-section';
+createRecordSection.style.display = 'none';
+chartSection.style.display = 'none';
+tableSection.id = 'table-section';
+tableSection.style.display = 'none';
 
 // upload elements
+const fileDivContainer = document.createElement('div');
+
 const uploadDiv = document.createElement('div');
 const fileInput = document.createElement('input');
 const uploadButton = document.createElement('button');
-const uploadText = document.createElement('span');
+const uploadText = document.createElement('p');
 
 uploadText.innerHTML = 'Select a .csv file from your local disk';
 fileInput.type = 'file';
@@ -32,7 +44,7 @@ uploadButton.innerHTML = 'Upload';
 
 // download elements
 const downloadDiv = document.createElement('div');
-const downloadText = document.createElement('span');
+const downloadText = document.createElement('p');
 const downloadButton = document.createElement('button');
 
 downloadText.innerHTML = 'Download data as .csv file';
@@ -40,14 +52,12 @@ downloadButton.innerHTML = 'Download';
 downloadButton.disabled = true;
 
 // chart elements
+const chartContainer = document.createElement('div');
 const barChartDiv = document.createElement('div');
 const pieChartDiv = document.createElement('div');
 const barCanvas = document.createElement('canvas');
 const pieCanvas = document.createElement('canvas');
-const pieChartLabel = document.createElement('span');
-
-barChartDiv.style.display = 'none';
-pieChartDiv.style.display = 'none';
+const pieChartLabel = document.createElement('p');
 
 barCanvas.width = 400;
 barCanvas.height = 400;
@@ -60,11 +70,10 @@ pieChartLabel.id = 'pie-chart-label';
 pieChartLabel.innerHTML = '% of Rows with X filled in Fields';
 
 // create new record elements
-const createRecordDiv = document.createElement('div');
+const createRecordContainer = document.createElement('div');
 const createRecordButton = document.createElement('button');
 
-createRecordDiv.id = 'create-record-div';
-createRecordDiv.style.display = 'none';
+createRecordContainer.id = 'create-record-container';
 createRecordButton.innerHTML = 'Create a new record';
 createRecordButton.id = 'create-record-button';
 
@@ -106,8 +115,7 @@ uploadButton.addEventListener('click', async () => {
     // percentage values for pie chart
     const dataRowSizePercentages = dataAnalyzer.getDataRowPercentages();
 
-    barChartDiv.style.display = '';
-    pieChartDiv.style.display = '';
+    chartSection.style.display = '';
 
     chartDrawer.drawBarChart(columnSizePercentages, columnNames);
     chartDrawer.drawPieChart(dataRowSizePercentages);
@@ -148,44 +156,34 @@ createRecordButton.addEventListener('click', recordCreator.createRecord);
 
 // Upload
 uploadDiv.appendChild(uploadText);
-uploadDiv.appendChild(document.createElement('br'));
-uploadDiv.appendChild(document.createElement('br'));
 uploadDiv.appendChild(fileInput);
 uploadDiv.appendChild(uploadButton);
+fileDivContainer.appendChild(uploadDiv);
 
 // Download
 downloadDiv.appendChild(downloadText);
-downloadDiv.appendChild(document.createElement('br'));
-downloadDiv.appendChild(document.createElement('br'));
 downloadDiv.appendChild(downloadButton);
+fileDivContainer.appendChild(downloadDiv);
 
 // Charts
 pieChartDiv.appendChild(pieChartLabel);
 pieChartDiv.appendChild(pieCanvas);
-
 barChartDiv.appendChild(barCanvas);
+chartContainer.appendChild(pieChartDiv);
+chartContainer.appendChild(barChartDiv);
 
 // Create
-createRecordDiv.appendChild(createRecordButton);
+createRecordContainer.appendChild(createRecordButton);
 
-// Top level
-fileManagementDiv.appendChild(uploadDiv);
-fileManagementDiv.appendChild(downloadDiv);
+// Section level
+fileSection.appendChild(fileDivContainer);
+chartSection.appendChild(chartContainer);
+createRecordSection.appendChild(createRecordContainer);
+tableSection.appendChild(table);
 
-chartManagementDiv.appendChild(barChartDiv);
-chartManagementDiv.appendChild(pieChartDiv);
-
-div.appendChild(fileManagementDiv);
-div.appendChild(document.createElement('br'));
-div.appendChild(document.createElement('br'));
-
-div.appendChild(chartManagementDiv);
-div.appendChild(document.createElement('br'));
-div.appendChild(document.createElement('br'));
-
-div.appendChild(createRecordDiv);
-div.appendChild(document.createElement('br'));
-div.appendChild(document.createElement('br'));
-div.appendChild(table);
-
-document.body.appendChild(div);
+// Root level
+document.body.appendChild(headline);
+document.body.appendChild(fileSection);
+document.body.appendChild(chartSection);
+document.body.appendChild(createRecordSection);
+document.body.appendChild(tableSection);

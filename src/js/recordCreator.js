@@ -54,6 +54,7 @@ function createOnClick() {
 
   textInputDiv.style.display = 'none';
   createRecordButton.disabled = false;
+  createRecordButton.style.display = '';
 
   window.scrollTo(0, document.body.scrollHeight); // scroll to bottom of page to show new entry
 }
@@ -72,6 +73,7 @@ function cancelOnClick() {
 
   textInputDiv.style.display = 'none';
   createRecordButton.disabled = false;
+  createRecordButton.style.display = '';
 }
 
 // Create div with text inputs
@@ -102,7 +104,7 @@ function createTextInputDiv() {
   textInputDiv.appendChild(createButton);
   textInputDiv.appendChild(cancelButton);
 
-  document.getElementById('create-record-div').appendChild(textInputDiv);
+  document.getElementById('create-record-container').appendChild(textInputDiv);
 }
 
 // Main function
@@ -111,6 +113,7 @@ export function createRecord() {
   let textInputDiv = document.getElementById('text-input-div');
 
   createRecordButton.disabled = true;
+  createRecordButton.style.display = 'none';
 
   if (!textInputDiv) {
     createTextInputDiv();

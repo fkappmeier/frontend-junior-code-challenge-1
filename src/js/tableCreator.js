@@ -63,8 +63,9 @@ function tableCellOnClick(clickedCell) {
 
 // Creates the table from data read from the csv file
 export function createTable(data) {
+  const tableSection = document.getElementById('table-section');
   const table = document.getElementById('csv-table');
-  table.style.display = 'none';
+  tableSection.style.display = 'none';
   table.innerHTML = ''; // clear all previous children of table
 
   data.forEach((dataRow, index) => {
@@ -98,8 +99,8 @@ export function createTable(data) {
     table.appendChild(tableRow);
   });
 
-  table.style.display = '';
-  document.getElementById('create-record-div').style.display = '';
+  tableSection.style.display = '';
+  document.getElementById('create-record-section').style.display = '';
 }
 
 // Adds a table row to the bottom of the table
