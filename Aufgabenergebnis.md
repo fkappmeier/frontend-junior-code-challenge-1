@@ -18,7 +18,7 @@ Ich setze in meinem Projekt die folgenden 3rd Party Libraries ein:
 Name | Begründung
 --- | ---
 [Papa Parse](https://www.papaparse.com/) | CSV-Parser, Artikel.csv beinhaltet zu viele Edge-Cases um per Hand geparset zu werden (siehe dataProcessor.js)
-[Chart.js](https://www.papaparse.com/) | populäre Diagrammbibliothek für JavaScript, zum Erstellen der in [1.5](https://github.com/UDG-United-Digital-Group/frontend-junior-code-challenge-1#1-zielsetzung) geforderten Diagramme
+[Chart.js](https://www.chartjs.org/) | populäre Diagrammbibliothek für JavaScript, zum Erstellen der in [1.5](https://github.com/UDG-United-Digital-Group/frontend-junior-code-challenge-1#1-zielsetzung) geforderten Diagramme
 [randomColor](https://randomcolor.lllllllllllllllll.com/) | Farbengenerator, zum automatischen Einfärben der Diagrammabschnitte mit (halbwegs) attraktiven Farben
 
 ### Dev-Dependencies
