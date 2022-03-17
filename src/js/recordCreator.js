@@ -80,6 +80,7 @@ function cancelOnClick() {
 function createTextInputDiv() {
   const textInputDiv = document.createElement('div');
   textInputDiv.id = 'text-input-div';
+  textInputDiv.className = 'bordered-container';
 
   const headline = document.createElement('h2');
   const textNode = document.createTextNode('Create a new data record');

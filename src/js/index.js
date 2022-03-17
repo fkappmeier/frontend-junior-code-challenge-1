@@ -31,12 +31,12 @@ tableSection.style.display = 'none';
 
 // upload elements
 const fileDivContainer = document.createElement('div');
-
 const uploadDiv = document.createElement('div');
 const fileInput = document.createElement('input');
 const uploadButton = document.createElement('button');
 const uploadText = document.createElement('p');
 
+uploadDiv.className = 'bordered-container';
 uploadText.innerHTML = 'Select a .csv file from your local disk';
 fileInput.type = 'file';
 fileInput.accept = '.csv';
@@ -47,6 +47,7 @@ const downloadDiv = document.createElement('div');
 const downloadText = document.createElement('p');
 const downloadButton = document.createElement('button');
 
+downloadDiv.className = 'bordered-container';
 downloadText.innerHTML = 'Download data as .csv file';
 downloadButton.innerHTML = 'Download';
 downloadButton.disabled = true;
@@ -59,6 +60,8 @@ const barCanvas = document.createElement('canvas');
 const pieCanvas = document.createElement('canvas');
 const pieChartLabel = document.createElement('p');
 
+barChartDiv.className = 'bordered-container';
+pieChartDiv.className = 'bordered-container';
 barCanvas.width = 400;
 barCanvas.height = 400;
 pieCanvas.width = 400;
