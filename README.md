@@ -1,56 +1,55 @@
-# Probeaufgabe 1 - CSV Verarbeitung
+# Aufgabenergebnis - Fredrik Kappmeier
 
-Eine immer wiederkehrende Anfoderung ist der Austausch von Daten zwischen verschiedenen Systemen. Für diesen Zweck werden häufig [CSV-Dateien (comma separated values)](https://de.wikipedia.org/wiki/CSV_(Dateiformat)) aus beispielsweise Datenbank-Exports, Kalender-Applications oder Spreadsheets verwendet.
+Die ursprüngliche README-Datei mit der Aufgabenstellung ist zu finden unter: https://github.com/UDG-United-Digital-Group/frontend-junior-code-challenge-1
 
-Die Daten werden z.B. aus einem Quell-System exportiert, in einem Zielsystem importiert, aufbereitet und wieder exportiert.
+## Eingesetzte Technologien / Frameworks
 
-## 1. Zielsetzung
+Folgende Technologien / Frameworks setze ich in meinem Projekt ein:
 
-Das Ziel ist die Implementierung einer Anwendung zur Verarbeitung und Aufbereitung der beiliegenden CSV-Datei. Die Aufgabe wird in folgendende Teil-Aufgaben/Funktionen gegliedert.
+- JavaScript
+- HTML & CSS
 
-1. Import der beiligenden CSV-Datei
-2. Tabellarische Darstellung der Daten aus der CSV-Datei
-3. Anlegen von neuen Datensätzen anhand des gleichen Schemas
-4. Bearbeitung bestehender Datensätze
-5. Prozentuale Darstellung von Datensätzen als Chart (Balken- oder Tortendiagramm)
-6. Export aller Daten als CSV-Datei mit dem gleichen Schema
+Ich habe mich für JavaScript entschieden, weil es die Technologie ist, die ich mit Abstand am besten beherrsche. Ich habe mich in den letzten Jahren meines Studiums auf den Bereich Web-Entwicklung spezialisiert und verschiedene Projekte durchgeführt. Dabei habe ich die Möglichkeiten von JS zu schätzen gelernt, sowohl die Syntaktischen als auch das breite Anwendungsgebiet der Sprache. Ich bin mit modernen ES6+ Konzepten von JavaScript vertraut und habe es während meiner Bachelor-Arbeit geschafft alle programmatischen Aufgaben in JavaScript zu lösen. Auch mit dem Umgang mit den verschiedenen Dokumentationen (MDN, npm & Co.) bin ich vertraut und habe so die Möglichkeit mich in einem angemessenen Zeitrahmen in Feinheiten der Technologien oder 3rd-Party-Libraries einzuarbeiten.
 
-## 2. Design
+## Eingesetzte 3rd Party Libraries
 
-Die Darstellung soll **strukturiert** und **ansprechend** für Benutzer sein. Farben und Schriften können frei gewählt werden. Das Frontend soll aus nur einer Seite bestehen.
+Ich setze in meinem Projekt die folgenden 3rd Party Libraries ein:
 
-## 3. Implementierung
+### Dependencies
 
-Du hast freie Hand bei der Wahl der Technologien. Ob JavaScript, PHP, C#, Java etc. ist komplett dir überlassen. Setze ein was du am Besten beherrschst.
+Name | Begründung
+--- | ---
+[Papa Parse](https://www.papaparse.com/) | CSV-Parser, Artikel.csv beinhaltet zu viele Edge-Cases um per Hand geparset zu werden (siehe dataProcessor.js)
+[Chart.js](https://www.papaparse.com/) | populäre Diagrammbibliothek für JavaScript, zum Erstellen der in 1.5 geforderten Diagramme
+[randomColor](https://randomcolor.lllllllllllllllll.com/) | Farbengenerator, zum automatischen Einfärben der Diagrammabschnitte mit (halbwegs) attraktiven Farben
 
-Uns ist folgendes wichtig:
+### Dev-Dependencies
 
-- Warum hast du dich für diese Technologie(n) / Sprache(n) entschieden
-- Wie sicher bist du im Umgang mit den ausgewählen Sprache(n) / Technologie(n)
-- Warum hast du zum Beispiel ein bestimmtes Framework gewählt
+Name | Begründung
+--- | ---
+[webpack](https://webpack.js.org/) | Zum Bündeln der einzelnen Dateien zu einer main.js-Datei.
+[webpack-cli](https://webpack.js.org/api/cli/) | Webpack-Erweiterung zum Erstellen einer webpack.config.js-Datei
+[style-loader](https://webpack.js.org/loaders/style-loader/) | Webpack-Loader welcher CSS-Styles automatisch zum DOM hinzufügt
+[css-loader](https://webpack.js.org/loaders/css-loader/) | Webpack-Loader zum Laden von importierten CSS-Dateien
+[less-loader](https://webpack.js.org/loaders/less-loader/) | Webpack-Loader zum Laden und Kompilieren von LESS-Dateien
+[html-webpack-plugin](https://webpack.js.org/plugins/html-webpack-plugin/) | Webpack-Erweiterung zum automatischen Generieren einer index.html-Datei
+[ESLint](https://eslint.org/) | Linter für sauberen und lesbaren Code
+[eslint-config-airbnb-base](https://www.npmjs.com/package/eslint-config-airbnb-base) | populäre Airbnb-Stylevorgabe für ESLint
+[eslint-plugin-import](https://www.npmjs.com/package/eslint-plugin-import) | ESLint-Erweiterung zur Unterstützung von ES6+ import/export-Syntax
 
-Wir möchten wissen, wo du stehst - welchen Kenntnisstand du hast.
+## Installation / Ausführen des Projektes
 
-### 3.1 Einsatz von 3rd Party Libraries
+Folgende Komponenten müssen lokal installiert sein:
 
-Die Umsetzung kann mit Hilfe von **3rd Party Libraries** erfolgen. Alle verwendeten Bibliotheken (welche nicht Teil oder Dependency eines Frontend- oder Backend-Frameworks sind) müssen **referenziert** werden. Bitte begründe ebenfalls, warum du dich für genau diese eingesetzen Bibliotheken entschieden hast.
+- [nodejs](https://nodejs.org/en/) v16.4.0 oder neuer
+- [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) v8.1.3 oder neuer
 
-### 3.2 Wartbarkeit
+Um das Projekt lokal auszuführen, folgendes in der Commandline / Bash eingeben:
 
-Bei der Umsetzung ist gut strukturierter und dokumentierter Code wichtig. Die Einhaltung von gängigen **Best Practises** und **Coding-Style-Guidelines** (abhängig von der jeweils eingesetzen Sprache / Technology) sind gewünscht.
-
-Dein Code soll gut **lesbar** und **verständlich** sein - auch für dritte. Auch der Programmablauf soll nachvollziehbar sein.
-
-Behalte im Hinterkopf, dass du und/oder andere auf dieser Code-Basis aufsetzen und das Projekt erweitern müssen.
-
-## 4. Bereitstellung
-
-Wenn du der Aufgabe fertig bist - oder nur einen Teil in der angegeben Zeit geschafft hast, kannst du uns dein Arbeitsergebnis wie folgt bereitstellen:
-
-1. Stelle uns den Link zu deinem Code-Repository zur Verfügung
-   - Falls du noch keines hast, kannst du bei den führenden Anbietern (z.B. [GitHub](https://github.com/), [GitLab](https://about.gitlab.com/), [Bitbucket](https://bitbucket.org/), [AzureDevOps](https://dev.azure.com/), ...) einen Account erstellen und dort dein Projekt bereitstellen.
-   - Bitte sorge dafür, dass die Sichtbarkeit des Repositories auf "Public" steht
-
-2. Füge eine Kopie der beiligenden Datei [Aufgabenergebnis](Aufgabenergebnis.md) hinzu und fülle alle Punkte entsprechend aus.
-
-3. Wenn du eine Demo deines Projektes bereitstellen möchtest, bietet [GitHub Pages](https://pages.github.com/) einen einfachen weg.
+```console
+$ git clone https://github.com/fkappmeier/frontend-junior-code-challenge-1 udg-probeaufgabe
+$ cd udg-probeaufgabe
+$ npm install
+$ npm run build
+```
+Danach muss lediglich die im /dist-Ordner befindliche index.html-Datei in einem Browser der Wahl geöffnet werden
